@@ -53,4 +53,18 @@ class DemoController extends Controller
 
         return array('form' => $form->createView());
     }
+
+
+
+    /**
+     * @Route("/inm", name="_demo_inm")
+     * @Template()
+     */
+    public function inmAction()
+    {
+        return array();
+    }
+
+
+
 }
