@@ -1,0 +1,7 @@
+parameters:
+#    inmuebles.example.class: DevelopSoft\InmueblesBundle\Example
+
+services:
+#    inmuebles.example:
+#        class: %inmuebles.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

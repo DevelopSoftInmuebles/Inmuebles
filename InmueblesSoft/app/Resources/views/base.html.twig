@@ -2,12 +2,59 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Inmuebles con y sin muebles{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <link href="{{ asset('bundles/inmuebles/css/bootstrap.min.css') }}" rel="stylesheet" />
+        
+<script src="{{ asset('bundles/inmuebles/js/jquery.js') }}"></script>
+<script src="{{ asset('bundles/inmuebles/js/bootstrap.min.js') }}"></script>
+<style>	
+         table {
+background-color: rgba(0, 0, 0, 0);
+border-collapse: collapse;
+border-spacing: 0;
+max-width: 100%;
+}
+         table thead{
+         background-color: #82bdf3;
+         }
+         table th{
+         padding: 10px 15px;
+         border: 1px solid gray;
+         }
+        
+         table td {
+         border: 1px solid gray;
+         padding: 10px 15px;
+         }
+        </style>
     </head>
     <body>
+
+<div class="container">
+     {% if app.user %}
+Bienvenido: {{ app.user.username }} - <a href="{{ path('logout')}}">Salir</a>
+<hr>
+
+     {% else %}
+    
+     {% endif %}
+    
+<h1>Muebles con y sin muebles</h1>
+
         {% block body %}{% endblock %}
+
+
+<hr/>
+<div class="container">
+Gerencia de proyectos informaticos 2014-I<br>
+Yina Lorena Gil Hernandez - 
+Jorge Andrés González Cetina - 1310012235
+</div>
+
         {% block javascripts %}{% endblock %}
+        
     </body>
 </html>

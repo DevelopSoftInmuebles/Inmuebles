@@ -1,0 +1,4 @@
+inmuebles:
+    resource: "@InmueblesBundle/Resources/config/routing.yml"
+    prefix:   /
+
