@@ -28,6 +28,14 @@ class Cita
      */
     private $fecha;
 
+	/**
+	* @ORM\ManyToOne(targetEntity="Usuario")
+	* @ORM\JoinColumn(name="idUsuario", referencedColumnName="id")
+	*/
+    private $usuarios;
+
+
+
 
     /**
      * Get id

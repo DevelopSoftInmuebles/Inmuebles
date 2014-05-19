@@ -70,6 +70,19 @@ class Usuario
      */
     private $telefono;
 
+	/**
+	* @ORM\OneToMany(targetEntity="Cita", mappedBy="usuarios")
+	*/
+    private $citas;
+
+	/**
+	* @ORM\ManyToOne(targetEntity="Pago")
+	* @ORM\JoinColumn(name="idPago", referencedColumnName="id")
+	*/
+    private $pagos;
+
+
+
 
     /**
      * Get id

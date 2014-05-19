@@ -99,6 +99,16 @@ class Inmueble
     private $inversiones;
 
 
+	/**
+	* @ORM\ManyToOne(targetEntity="Pago")
+	* @ORM\JoinColumn(name="idPago", referencedColumnName="id")
+	*/
+    private $pagos;
+
+
+
+
+
     /**
      * Get id
      *
