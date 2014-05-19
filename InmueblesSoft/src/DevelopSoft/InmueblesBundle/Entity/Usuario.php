@@ -254,4 +254,67 @@ class Usuario
     {
         return $this->telefono;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->citas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add citas
+     *
+     * @param \DevelopSoft\InmueblesBundle\Entity\Cita $citas
+     * @return Usuario
+     */
+    public function addCita(\DevelopSoft\InmueblesBundle\Entity\Cita $citas)
+    {
+        $this->citas[] = $citas;
+
+        return $this;
+    }
+
+    /**
+     * Remove citas
+     *
+     * @param \DevelopSoft\InmueblesBundle\Entity\Cita $citas
+     */
+    public function removeCita(\DevelopSoft\InmueblesBundle\Entity\Cita $citas)
+    {
+        $this->citas->removeElement($citas);
+    }
+
+    /**
+     * Get citas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCitas()
+    {
+        return $this->citas;
+    }
+
+    /**
+     * Set pagos
+     *
+     * @param \DevelopSoft\InmueblesBundle\Entity\Pago $pagos
+     * @return Usuario
+     */
+    public function setPagos(\DevelopSoft\InmueblesBundle\Entity\Pago $pagos = null)
+    {
+        $this->pagos = $pagos;
+
+        return $this;
+    }
+
+    /**
+     * Get pagos
+     *
+     * @return \DevelopSoft\InmueblesBundle\Entity\Pago 
+     */
+    public function getPagos()
+    {
+        return $this->pagos;
+    }
 }

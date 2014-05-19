@@ -105,8 +105,12 @@ class Inmueble
 	*/
     private $pagos;
 
-
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=1024)
+     */
+    private $url;
 
 
     /**
@@ -370,5 +374,51 @@ class Inmueble
     public function getInversiones()
     {
         return $this->inversiones;
+    }
+
+    /**
+     * Set url
+     *
+     * @param string $url
+     * @return Inmueble
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return string 
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * Set pagos
+     *
+     * @param \DevelopSoft\InmueblesBundle\Entity\Pago $pagos
+     * @return Inmueble
+     */
+    public function setPagos(\DevelopSoft\InmueblesBundle\Entity\Pago $pagos = null)
+    {
+        $this->pagos = $pagos;
+
+        return $this;
+    }
+
+    /**
+     * Get pagos
+     *
+     * @return \DevelopSoft\InmueblesBundle\Entity\Pago 
+     */
+    public function getPagos()
+    {
+        return $this->pagos;
     }
 }

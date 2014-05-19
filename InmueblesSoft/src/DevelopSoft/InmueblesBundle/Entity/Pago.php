@@ -166,4 +166,78 @@ class Pago
     {
         return $this->pagosCol;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->inmuebles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add usuarios
+     *
+     * @param \DevelopSoft\InmueblesBundle\Entity\Usuario $usuarios
+     * @return Pago
+     */
+    public function addUsuario(\DevelopSoft\InmueblesBundle\Entity\Usuario $usuarios)
+    {
+        $this->usuarios[] = $usuarios;
+
+        return $this;
+    }
+
+    /**
+     * Remove usuarios
+     *
+     * @param \DevelopSoft\InmueblesBundle\Entity\Usuario $usuarios
+     */
+    public function removeUsuario(\DevelopSoft\InmueblesBundle\Entity\Usuario $usuarios)
+    {
+        $this->usuarios->removeElement($usuarios);
+    }
+
+    /**
+     * Get usuarios
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
+    }
+
+    /**
+     * Add inmuebles
+     *
+     * @param \DevelopSoft\InmueblesBundle\Entity\Inmueble $inmuebles
+     * @return Pago
+     */
+    public function addInmueble(\DevelopSoft\InmueblesBundle\Entity\Inmueble $inmuebles)
+    {
+        $this->inmuebles[] = $inmuebles;
+
+        return $this;
+    }
+
+    /**
+     * Remove inmuebles
+     *
+     * @param \DevelopSoft\InmueblesBundle\Entity\Inmueble $inmuebles
+     */
+    public function removeInmueble(\DevelopSoft\InmueblesBundle\Entity\Inmueble $inmuebles)
+    {
+        $this->inmuebles->removeElement($inmuebles);
+    }
+
+    /**
+     * Get inmuebles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getInmuebles()
+    {
+        return $this->inmuebles;
+    }
 }

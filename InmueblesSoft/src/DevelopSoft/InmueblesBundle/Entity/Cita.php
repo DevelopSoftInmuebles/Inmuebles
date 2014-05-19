@@ -69,4 +69,27 @@ class Cita
     {
         return $this->fecha;
     }
+
+    /**
+     * Set usuarios
+     *
+     * @param \DevelopSoft\InmueblesBundle\Entity\Usuario $usuarios
+     * @return Cita
+     */
+    public function setUsuarios(\DevelopSoft\InmueblesBundle\Entity\Usuario $usuarios = null)
+    {
+        $this->usuarios = $usuarios;
+
+        return $this;
+    }
+
+    /**
+     * Get usuarios
+     *
+     * @return \DevelopSoft\InmueblesBundle\Entity\Usuario 
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
+    }
 }
