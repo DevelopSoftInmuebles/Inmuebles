@@ -4,17 +4,24 @@
 <head profile="http://gmpg.org/xfn/11">
 <meta charset="UTF-8" />
 <link href="{{ asset('bundles/inmuebles/css/layout.css') }}" rel="stylesheet" />
+
 </head>
 
 	<body id="top">
 		<div class="wrapper">
 			<div id="header">
 				<div id="logo">
-					<h1><a href="#">Inmueble</a></h1>      
-				</div>    
-				<br class="clear" />
+					<h1><a href="#">Inmueble</a></h1>
+				</div>		
+				<div id="topnav">			
+					<ul>
+						<li><a href="{{ path('inmueble') }}">Back to the list</a></li>
+						<li><a href="{{ path('inmueble_edit', { 'id': entity.id }) }}">Edit</a></li>
+						<li class="last">{{ form(delete_form) }}</li>
+					</ul>  
+				</div>
+				<br class="clear" />			
 			</div>
-			<br class="clear" />
 		</div>
 		
 		<div class="wrapper">
@@ -58,13 +65,7 @@
 		
 
 		<div class="wrapper">
-			<div id="header">				
-				 <ul>
-					<li><a href="{{ path('inmueble') }}">Back to the list</a></li>
-					<li><a href="{{ path('inmueble_edit', { 'id': entity.id }) }}">Edit</a></li>	.
-					<li><a href="">{{ form(delete_form) }}</a></li>
-				 </ul>  
-			</div>	
+			
 			
 			<br class="clear" />
 		</div>
