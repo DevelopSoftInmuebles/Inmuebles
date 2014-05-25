@@ -240,7 +240,7 @@ class InmuebleController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('inmueble_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Delete123'))
             ->getForm()
         ;
     }

@@ -16,67 +16,44 @@
 			</div>
 			<br class="clear" />
 		</div>
-
-	 
+		
 		<div class="wrapper">
 			<div id="latest">
-				<table>
-					<tbody>
-						<tr class="light">
-							<th>Id</th>
-							<td>{{ entity.id }}</td>
-						</tr>
-						<tr class="dark">
-							<th>Tipo</th>
-							<td>{{ entity.tipo }}</td>
-						</tr>
-						<tr class="light">
-							<th>Direccion</th>
-							<td>{{ entity.direccion }}</td>
-						</tr>
-						<tr class="dark">
-							<th>Estrato</th>
-							<td>{{ entity.estrato }}</td>
-						</tr>
-						<tr class="light">
-							<th>Agua</th>
-							<td>{{ entity.agua }}</td>
-						</tr>
-						<tr class="dark">
-							<th>Luz</th>
-							<td>{{ entity.luz }}</td>
-						</tr>
-						<tr class="light">
-							<th>Gas</th>
-							<td>{{ entity.gas }}</td>
-						</tr>
-						<tr class="dark">
-							<th>Telefono</th>
-							<td>{{ entity.telefono }}</td>
-						</tr>
-						<tr class="light">
-							<th>Reparaciones</th>
-							<td>{{ entity.reparaciones }}</td>
-						</tr>
-						<tr class="dark">
-							<th>Mejoras</th>
-							<td>{{ entity.mejoras }}</td>
-						</tr>
-						<tr class="light">
-							<th>Novedades</th>
-							<td>{{ entity.novedades }}</td>
-						</tr>
-						<tr class="dark">
-							<th>Inversiones</th>
-							<td>{{ entity.inversiones }}</td>
-						</tr>
-						<tr class="light">
-							<th>Url</th>
-							<td>{{ entity.url }}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+				<div class="fl_left">				
+					<img class="float" src="{{ entity.url }}" width="575" height="300" alt="image 1" />							
+				</div>					
+
+				<div class="fl_right">
+					<h2>Caracteristicas del Inmueble.</h2>
+					<p><b>Tipo: </b>{{ entity.id }}</p>
+					<p><b>Direccion: </b>{{ entity.direccion }}</p>
+					<p><b>Estrato: </b>{{ entity.estrato }}</p>
+					<p><b>Servicios: </b>{% if entity.agua == 1 %} Agua {% endif %}{% if entity.luz == 1 %}	Luz {% endif %}
+					{% if entity.gas == 1 %} Gas {% endif %}{% if entity.telefono == 1 %} Telefono {% endif %}				
+				
+				</div>
+					<br class="clear" />
+				</div>
+			</div>	
+			
+		<div class="wrapper">
+		  <div id="intro">
+			<ul>
+			  <li>
+				<h2>Reparaciones</h2>				
+				<p>{{ entity.reparaciones }}</p>		
+			  </li>
+			  <li>
+				<h2>Mejoras</h2>						
+				{{ entity.mejoras }}
+			  </li>
+			  <li class="last">
+				<h2>Novedades</h2>				
+				<p>{{ entity.novedades }}</p>				
+			  </li>
+			</ul>
+			<br class="clear" />
+		  </div>
 		</div>
 		
 
@@ -85,11 +62,19 @@
 				 <ul>
 					<li><a href="{{ path('inmueble') }}">Back to the list</a></li>
 					<li><a href="{{ path('inmueble_edit', { 'id': entity.id }) }}">Edit</a></li>	.
-					<li>{{ form(delete_form) }}</li>
+					<li><a href="">{{ form(delete_form) }}</a></li>
 				 </ul>  
 			</div>	
 			
 			<br class="clear" />
+		</div>
+		
+		<div class="wrapper">
+			<div id="copyright">
+				<p class="fl_left">Gerencia de proyectos informaticos 2014-I</p>
+				<p class="fl_right">Yina Lorena Gil Hernandez - Jorge Andrés González Cetina - 1310012235</p>
+				<br class="clear" />
+			</div>
 		</div>
 		
 		
