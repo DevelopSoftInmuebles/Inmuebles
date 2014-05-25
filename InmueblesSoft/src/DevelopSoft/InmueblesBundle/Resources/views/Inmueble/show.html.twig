@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
+<title>Inmuebles con y sin muebles</title>
+<head profile="http://gmpg.org/xfn/11">
+<meta charset="UTF-8" />
+<link href="{{ asset('bundles/inmuebles/css/layout.css') }}" rel="stylesheet" />
+</head>
+
+	<body id="top">
+		<div class="wrapper">
+			<div id="header">
+				<div id="logo">
+					<h1><a href="#">Inmueble</a></h1>      
+				</div>    
+				<br class="clear" />
+			</div>
+			<br class="clear" />
+		</div>
+
+	 
+		<div class="wrapper">
+			<div id="latest">
+				<table>
+					<tbody>
+						<tr class="light">
+							<th>Id</th>
+							<td>{{ entity.id }}</td>
+						</tr>
+						<tr class="dark">
+							<th>Tipo</th>
+							<td>{{ entity.tipo }}</td>
+						</tr>
+						<tr class="light">
+							<th>Direccion</th>
+							<td>{{ entity.direccion }}</td>
+						</tr>
+						<tr class="dark">
+							<th>Estrato</th>
+							<td>{{ entity.estrato }}</td>
+						</tr>
+						<tr class="light">
+							<th>Agua</th>
+							<td>{{ entity.agua }}</td>
+						</tr>
+						<tr class="dark">
+							<th>Luz</th>
+							<td>{{ entity.luz }}</td>
+						</tr>
+						<tr class="light">
+							<th>Gas</th>
+							<td>{{ entity.gas }}</td>
+						</tr>
+						<tr class="dark">
+							<th>Telefono</th>
+							<td>{{ entity.telefono }}</td>
+						</tr>
+						<tr class="light">
+							<th>Reparaciones</th>
+							<td>{{ entity.reparaciones }}</td>
+						</tr>
+						<tr class="dark">
+							<th>Mejoras</th>
+							<td>{{ entity.mejoras }}</td>
+						</tr>
+						<tr class="light">
+							<th>Novedades</th>
+							<td>{{ entity.novedades }}</td>
+						</tr>
+						<tr class="dark">
+							<th>Inversiones</th>
+							<td>{{ entity.inversiones }}</td>
+						</tr>
+						<tr class="light">
+							<th>Url</th>
+							<td>{{ entity.url }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+
+		<div class="wrapper">
+			<div id="header">				
+				 <ul>
+					<li><a href="{{ path('inmueble') }}">Back to the list</a></li>
+					<li><a href="{{ path('inmueble_edit', { 'id': entity.id }) }}">Edit</a></li>	.
+					<li>{{ form(delete_form) }}</li>
+				 </ul>  
+			</div>	
+			
+			<br class="clear" />
+		</div>
+		
+		
+	</body>
+</html>

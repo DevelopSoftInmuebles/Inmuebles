@@ -1,3 +1,7 @@
 inmuebles_homepage:
     pattern:  /
     defaults: { _controller: InmueblesBundle:Default:index }
+inmuebles_admin:
+    resource: "@InmueblesBundle/Controller/InmuebleController.php"
+    type: annotation
+    prefix: /
