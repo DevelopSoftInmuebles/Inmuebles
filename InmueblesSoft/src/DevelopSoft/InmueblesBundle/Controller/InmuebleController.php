@@ -28,6 +28,11 @@ class InmuebleController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+	    $user = $this->getUser();
+		if (!isset($user)){
+			$entities = $em->getRepository('InmueblesBundle:Inmueble')->findAll();
+			return $this->redirect($this->generateUrl('inmueble_show', array("id"=>$entities[0]->getId())));
+		}
 
         $entities = $em->getRepository('InmueblesBundle:Inmueble')->findAll();
 
@@ -113,7 +118,8 @@ class InmuebleController extends Controller
         $entity = $em->getRepository('InmueblesBundle:Inmueble')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Inmueble entity.');
+			$entities = $em->getRepository('InmueblesBundle:Inmueble')->findAll();
+			$entity = $entities[0];
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -134,11 +140,18 @@ class InmuebleController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+   	    $user = $this->getUser();
+		if (!isset($user)){
+			$entities = $em->getRepository('InmueblesBundle:Inmueble')->findAll();
+			return $this->redirect($this->generateUrl('inmueble_show', array("id"=>$entities[0]->getId())));
+		}
+
 
         $entity = $em->getRepository('InmueblesBundle:Inmueble')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Inmueble entity.');
+			$entities = $em->getRepository('InmueblesBundle:Inmueble')->findAll();
+			return $this->redirect($this->generateUrl('inmueble_show', array("id"=>$entities[0]->getId())));
         }
 
         $editForm = $this->createEditForm($entity);
@@ -183,7 +196,8 @@ class InmuebleController extends Controller
         $entity = $em->getRepository('InmueblesBundle:Inmueble')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Inmueble entity.');
+        	$entities = $em->getRepository('InmueblesBundle:Inmueble')->findAll();
+			return $this->redirect($this->generateUrl('inmueble_show', array("id"=>$entities[0]->getId())));
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -210,6 +224,14 @@ class InmuebleController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+
+        $em = $this->getDoctrine()->getManager();        
+   	    $user = $this->getUser();
+		if (!isset($user)){
+			$entities = $em->getRepository('InmueblesBundle:Inmueble')->findAll();
+			return $this->redirect($this->generateUrl('inmueble_show', array("id"=>$entities[0]->getId())));
+		}
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -218,7 +240,8 @@ class InmuebleController extends Controller
             $entity = $em->getRepository('InmueblesBundle:Inmueble')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Inmueble entity.');
+                $entities = $em->getRepository('InmueblesBundle:Inmueble')->findAll();
+				return $this->redirect($this->generateUrl('inmueble_show', array("id"=>$entities[0]->getId())));
             }
 
             $em->remove($entity);

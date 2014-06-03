@@ -135,6 +135,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 	float:left;
 	width:575px;
 	height:300px;
+    overflow: hidden;
 	}
 
 #latest .fl_right{
@@ -168,7 +169,8 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 	list-style:none;
 	}
 
-#latest ul li{
+/*
+#latest  ul li{
 	display:block;
 	float:left;
 	width:100px;
@@ -181,7 +183,7 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 #latest ul li.last{
 	margin-right:0;
 	}
-
+*/
 /* ----------------------------------------------Intro-------------------------------------*/
 
 #intro{
@@ -528,3 +530,20 @@ div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, 
 	margin:0;
 	padding:0;
 	}
+	
+
+#latest form input{
+	min-height: 20px;	
+}
+
+#latest form input[type="checkbox"] {
+	min-height: 40px;	
+}
+	
+	
+label {
+    float: left;
+    height: 30px;
+    margin-bottom: 5px;
+    width: 200px;
+}

@@ -5,3 +5,26 @@ inmuebles_admin:
     resource: "@InmueblesBundle/Controller/InmuebleController.php"
     type: annotation
     prefix: /
+
+
+login:
+    pattern: /login
+    defaults: { _controller: InmueblesBundle:Default:login }
+
+login_check:
+    pattern: /login_check
+
+
+logout:
+    pattern: /logout
+    defaults: { _controller: InmueblesBundle:Default:logout }
+
+logout_check:
+    pattern: /logout_check
+
+registro:
+    pattern: /registro
+    defaults: { _controller: InmueblesBundle:Default:registro }
+
+
+

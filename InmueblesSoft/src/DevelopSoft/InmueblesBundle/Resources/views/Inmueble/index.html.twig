@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Inmueble list</h1>
+    <h1>Lista Inmuebles</h1>
 
     <table class="records_list">
         <thead>
@@ -10,16 +10,13 @@
                 <th>Tipo</th>
                 <th>Direccion</th>
                 <th>Estrato</th>
-                <th>Agua</th>
-                <th>Luz</th>
-                <th>Gas</th>
-                <th>Telefono</th>
+                <th>Servicios</th>
                 <th>Reparaciones</th>
                 <th>Mejoras</th>
                 <th>Novedades</th>
                 <th>Inversiones</th>
                 <th>Url</th>
-                <th>Actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -29,10 +26,10 @@
                 <td>{{ entity.tipo }}</td>
                 <td>{{ entity.direccion }}</td>
                 <td>{{ entity.estrato }}</td>
-                <td>{{ entity.agua }}</td>
-                <td>{{ entity.luz }}</td>
-                <td>{{ entity.gas }}</td>
-                <td>{{ entity.telefono }}</td>
+                <td>
+                	{% if entity.agua == 1 %} Agua {% endif %}{% if entity.luz == 1 %}	Luz {% endif %}
+					{% if entity.gas == 1 %} Gas {% endif %}{% if entity.telefono == 1 %} Telefono {% endif %}
+				</td>
                 <td>{{ entity.reparaciones }}</td>
                 <td>{{ entity.mejoras }}</td>
                 <td>{{ entity.novedades }}</td>
@@ -41,10 +38,10 @@
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('inmueble_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('inmueble_show', { 'id': entity.id }) }}">Visualizar</a>
                     </li>
                     <li>
-                        <a href="{{ path('inmueble_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('inmueble_edit', { 'id': entity.id }) }}">Editar</a>
                     </li>
                 </ul>
                 </td>
@@ -53,10 +50,10 @@
         </tbody>
     </table>
 
-        <ul>
+	<ul>
         <li>
             <a href="{{ path('inmueble_new') }}">
-                Create a new entry
+                Nuevo Inmueble
             </a>
         </li>
     </ul>

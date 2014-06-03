@@ -1,85 +1,56 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
-<title>Inmuebles con y sin muebles</title>
-<head profile="http://gmpg.org/xfn/11">
-<meta charset="UTF-8" />
-<link href="{{ asset('bundles/inmuebles/css/layout.css') }}" rel="stylesheet" />
+{% extends '::base.html.twig' %}
 
-</head>
+{% block menu %}
+	<div id="topnav">			
+		<ul>
+	{% if app.user %}
+			<li><a href="{{ path('inmueble') }}">Inicio</a></li>
+			<li><a href="{{ path('inmueble_edit', { 'id': entity.id }) }}">Editar</a></li>
+	{% endif %}
+			<li><a href="{{ path('inmueble_show', { 'id': entity.id-1 }) }}">Anterior</a></li>
+			<li><a href="{{ path('inmueble_show', { 'id': entity.id+1 }) }}">Siguiente</a></li>					
+	{% if app.user %}
+			<li class="last">{{ form(delete_form) }}</li>
+	{% endif %}
+		</ul>  
+	</div>
+	<br class="clear" />			
+{% endblock %}
 
-	<body id="top">
-		<div class="wrapper">
-			<div id="header">
-				<div id="logo">
-					<h1><a href="#">Muebles con y sin muebles</a></h1>
-				</div>		
-				<div id="topnav">			
-					<ul>
-						<li><a href="{{ path('inmueble') }}">Inicio</a></li>
-						<li><a href="{{ path('inmueble_edit', { 'id': entity.id }) }}">Edit</a></li>
-						<li><a href="{{ path('inmueble_show', { 'id': entity.id-1 }) }}">Anterior</a></li>
-						<li><a href="{{ path('inmueble_show', { 'id': entity.id+1 }) }}">Siguiente</a></li>					
-						<li class="last">{{ form(delete_form) }}</li>
-					</ul>  
-				</div>
-				<br class="clear" />			
-			</div>
-		</div>
-		
-		<div class="wrapper">
-			<div id="latest">
-				<div class="fl_left">				
-					<img class="float" src="{{ entity.url }}" width="575" height="300" alt="image 1" />							
-				</div>					
 
-				<div class="fl_right">
-					<h2>Caracteristicas del Inmueble.</h2>
-					<p><b>Tipo: </b>{{ entity.tipo }}</p>
-					<p><b>Direccion: </b>{{ entity.direccion }}</p>
-					<p><b>Estrato: </b>{{ entity.estrato }}</p>
-					<p><b>Servicios: </b>{% if entity.agua == 1 %} Agua {% endif %}{% if entity.luz == 1 %}	Luz {% endif %}
-					{% if entity.gas == 1 %} Gas {% endif %}{% if entity.telefono == 1 %} Telefono {% endif %}				
+
+{% block body %}
+	<div class="fl_left">				
+		<img class="float" src="{{ entity.url }}" width="575" height="300" alt="image 1" />							
+	</div>					
+
+	<div class="fl_right">
+		<h2>Caracteristicas del Inmueble.</h2>
+		<p><b>Tipo: </b>{{ entity.tipo }}</p>
+		<p><b>Direccion: </b>{{ entity.direccion }}</p>
+		<p><b>Estrato: </b>{{ entity.estrato }}</p>
+		<p><b>Servicios: </b>{% if entity.agua == 1 %} Agua {% endif %}{% if entity.luz == 1 %}	Luz {% endif %}
+		{% if entity.gas == 1 %} Gas {% endif %}{% if entity.telefono == 1 %} Telefono {% endif %}				
+
+	</div>
+{% endblock %}
+
 				
-				</div>
-					<br class="clear" />
-				</div>
-			</div>	
-			
-		<div class="wrapper">
-		  <div id="intro">
-			<ul>
-			  <li>
-				<h2>Reparaciones</h2>				
-				<p>{{ entity.reparaciones }}</p>		
-			  </li>
-			  <li>
-				<h2>Mejoras</h2>						
-				{{ entity.mejoras }}
-			  </li>
-			  <li class="last">
-				<h2>Novedades</h2>				
-				<p>{{ entity.novedades }}</p>				
-			  </li>
-			</ul>
-			<br class="clear" />
-		  </div>
-		</div>
-		
-
-		<div class="wrapper">
-			
-			
-			<br class="clear" />
-		</div>
-		
-		<div class="wrapper">
-			<div id="copyright">
-				<p class="fl_left">Gerencia de proyectos informaticos 2014-I</p>
-				<p class="fl_right">Yina Lorena Gil Hernandez - Jorge Andrés González Cetina - 1310012235</p>
-				<br class="clear" />
-			</div>
-		</div>
-		
-		
-	</body>
-</html>
+				
+{% block detalles %}
+<ul>
+  <li>
+	<h2>Reparaciones</h2>				
+	<p>{{ entity.reparaciones }}</p>		
+  </li>
+  <li>
+	<h2>Mejoras</h2>						
+	{{ entity.mejoras }}
+  </li>
+  <li class="last">
+	<h2>Novedades</h2>				
+	<p>{{ entity.novedades }}</p>				
+  </li>
+</ul>
+<br class="clear" />
+{% endblock %}

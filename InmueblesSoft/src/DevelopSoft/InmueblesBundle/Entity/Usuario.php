@@ -3,6 +3,8 @@
 namespace DevelopSoft\InmueblesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 /**
  * Usuario
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Usuario
+class Usuario implements UserInterface, \Serializable, EquatableInterface
 {
     /**
      * @var integer
@@ -317,4 +319,119 @@ class Usuario
     {
         return $this->pagos;
     }
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+    /**
+	* Set salt
+	*
+	* @param string $salt
+	* @return Usuario
+	*/
+    public function setSalt($salt)
+    {
+        return $this;
+    }
+
+    /**
+	* Get salt
+	*
+	* @return string
+	*/
+    public function getSalt()
+    {
+        return "";
+    }
+
+
+
+//////////////////////////////////////
+
+    public function getPassword()
+    {
+        return $this->contrasena;
+    }
+
+    public function getUsername()
+    {
+        return $this->nombreUsuario;
+    }
+	public function getRoles()
+	{
+		return array("ROLE_ADMIN");
+	}
+	public function eraseCredentials()
+    {
+    }
+
+    public function isEqualTo(UserInterface $user)
+    {
+
+        if (!$user instanceof Usuario) {
+            return false;
+        }
+
+        if ($this->contrasena !== $user->getPassword()) {
+            return false;
+        }
+
+        if ($this->getSalt() !== $user->getSalt()) {
+            return false;
+        }
+
+        if ($this->nombreUsuario !== $user->getUsername()) {
+            return false;
+        }
+
+        return true;
+    }
+
+
+    /**
+     * Serializes the content of the current User object
+     * @return string
+     */
+    public function serialize()
+    {
+        return \serialize(
+                array(
+        	$this->id,
+        	$this->cedula,
+        	$this->nombre,
+        	$this->email,
+        	$this->nombreUsuario,
+        	$this->contrasena,
+        	$this->calificacion,
+        	$this->telefono
+                    ));
+    }
+
+    /**
+     * Unserializes the given string in the current User object
+     * @param serialized
+     */
+    public function unserialize($serialized)
+    {
+        list(
+        	$this->id,
+        	$this->cedula,
+        	$this->nombre,
+        	$this->email,
+        	$this->nombreUsuario,
+        	$this->contrasena,
+        	$this->calificacion,
+        	$this->telefono
+            ) 
+                   = \unserialize($serialized);
+    }
+
+
+
+
+
+
 }

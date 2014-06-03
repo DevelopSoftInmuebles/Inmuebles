@@ -1,60 +1,86 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Inmuebles con y sin muebles{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="EN" lang="EN" dir="ltr">
+<title>{% block title %}Inmuebles con y sin muebles{% endblock %}</title>
+<head profile="http://gmpg.org/xfn/11">
+		<meta charset="UTF-8" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
         <link href="{{ asset('bundles/inmuebles/css/bootstrap.min.css') }}" rel="stylesheet" />
+		<link href="{{ asset('bundles/inmuebles/css/layout.css') }}" rel="stylesheet" />
+		{% block stylesheets %}{% endblock %}
         
-<script src="{{ asset('bundles/inmuebles/js/jquery.js') }}"></script>
-<script src="{{ asset('bundles/inmuebles/js/bootstrap.min.js') }}"></script>
-<style>	
-         table {
-background-color: rgba(0, 0, 0, 0);
-border-collapse: collapse;
-border-spacing: 0;
-max-width: 100%;
-}
-         table thead{
-         background-color: #82bdf3;
-         }
-         table th{
-         padding: 10px 15px;
-         border: 1px solid gray;
-         }
-        
-         table td {
-         border: 1px solid gray;
-         padding: 10px 15px;
-         }
-        </style>
-    </head>
-    <body>
+		<script src="{{ asset('bundles/inmuebles/js/jquery.js') }}"></script>
+		<script src="{{ asset('bundles/inmuebles/js/bootstrap.min.js') }}"></script>
+		<style>	
+			table {
+				background-color: rgba(0, 0, 0, 0);
+				border-collapse: collapse;
+				border-spacing: 0;
+				max-width: 100%;
+			}
+			table thead{
+				background-color: #82bdf3;
+			}
+			table th{
+				padding: 10px 15px;
+				border: 1px solid gray;
+			}
 
-<div class="container">
-     {% if app.user %}
-Bienvenido: {{ app.user.username }} - <a href="{{ path('logout')}}">Salir</a>
-<hr>
+			table td {
+				border: 1px solid gray;
+				padding: 10px 15px;
+			}
+		</style>
+</head>
+	<body id="top">
+		<div class="wrapper">
+			<div id="header">
+				<div id="logo">
+					<h1><a href="#">Muebles con y sin muebles</a></h1>
+				</div>		
+				<div id="topnav">			
+					{% if app.user %}
+						Bienvenido: {{ app.user.username }} - <a href="{{ path('logout')}}">Salir</a>
+					{% else %}
+						<a href="{{path('login')}}">Ingresar</a> - <a href="{{path('registro')}}">Registro</a> 
+					{% endif %}
+					<hr>
+			        {% block menu %}
+			        {% endblock %}
+				</div>
+				<br class="clear" />			
+			</div>
+		</div>
+		
+		<div class="wrapper">
+			<div id="latest">
+				{% block body %}{% endblock %}
+				<br class="clear" />
+			</div>
+		</div>	
+			
+		<div class="wrapper">
+		  <div id="intro">
+			{% block detalles %}{% endblock %}
+			<br class="clear" />
+		  </div>
+		</div>
+		
 
-     {% else %}
-    
-     {% endif %}
-    
-<h1>Muebles con y sin muebles</h1>
-
-        {% block body %}{% endblock %}
-
-
-<hr/>
-<div class="container">
-Gerencia de proyectos informaticos 2014-I<br>
-Yina Lorena Gil Hernandez - 
-Jorge Andrés González Cetina - 1310012235
-</div>
-
-        {% block javascripts %}{% endblock %}
-        
-    </body>
+		<div class="wrapper">
+			
+			
+			<br class="clear" />
+		</div>
+		
+		<div class="wrapper">
+			<div id="copyright">
+				<p class="fl_left">Gerencia de proyectos informaticos 2014-I</p>
+				<p class="fl_right">Yina Lorena Gil Hernandez - Jorge Andrés González Cetina - 1310012235</p>
+				<br class="clear" />
+			</div>
+		</div>
+		
+		
+	</body>
 </html>
